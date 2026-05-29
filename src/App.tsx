@@ -1,5 +1,6 @@
-import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import { BrowserRouter, Routes, Route, NavLink } from "react-router-dom";
 import { StudioProvider } from "./context/StudioProvider";
+import styles from "./App.module.css";
 import AudioEngine from "./components/AudioEngine";
 import StagePage from "./routes/StagePage";
 import PresetsPage from "./routes/PresetsPage";
@@ -11,10 +12,33 @@ export default function App() {
     <StudioProvider>
       <AudioEngine />
       <BrowserRouter>
-        <nav style={{ display: "flex", gap: 12, padding: 12 }}>
-          <Link to="/">Stage</Link>
-          <Link to="/presets">Presets</Link>
-          <Link to="/about">About</Link>
+        <nav className={styles.nav}>
+          <span className={styles.brand}>◆ SYNTH CREW</span>
+          <NavLink
+            to="/"
+            end
+            className={({ isActive }) =>
+              isActive ? `${styles.link} ${styles.active}` : styles.link
+            }
+          >
+            Stage
+          </NavLink>
+          <NavLink
+            to="/presets"
+            className={({ isActive }) =>
+              isActive ? `${styles.link} ${styles.active}` : styles.link
+            }
+          >
+            Presets
+          </NavLink>
+          <NavLink
+            to="/about"
+            className={({ isActive }) =>
+              isActive ? `${styles.link} ${styles.active}` : styles.link
+            }
+          >
+            About
+          </NavLink>
         </nav>
         <Routes>
           <Route path="/" element={<StagePage />} />

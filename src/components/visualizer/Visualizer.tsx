@@ -15,8 +15,10 @@ export default function Visualizer() {
         width: "100%",
         height: 120,
         display: "block",
-        background: "#141416",
+        background: "var(--bg-panel)",
+        border: "1px solid var(--border)",
         borderRadius: 12,
+        margin: "12px 0",
       }}
     />
   );

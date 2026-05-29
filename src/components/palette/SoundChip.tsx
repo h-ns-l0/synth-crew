@@ -23,6 +23,9 @@ export default function SoundChip({ sound, selected, onClick }: Props) {
         color: selected ? "#0b0b0c" : "#f1efe8",
         cursor: "pointer",
         fontSize: 14,
+        fontWeight: 600,
+        boxShadow: selected ? `0 0 16px ${sound.color}` : "none",
+        transition: "box-shadow 0.15s, background 0.15s",
       }}
     >
       <span

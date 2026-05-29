@@ -1,0 +1,35 @@
+.nav {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  padding: 14px 4px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 8px;
+}
+
+.brand {
+  font-weight: 800;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--text-h);
+  margin-right: auto;
+  text-shadow: 0 0 12px rgba(232, 121, 249, 0.5);
+}
+
+.link {
+  color: var(--text);
+  padding: 6px 12px;
+  border-radius: 8px;
+  border: 1px solid transparent;
+}
+
+.link:hover {
+  color: var(--text-h);
+  border-color: var(--border);
+}
+
+.active {
+  color: var(--bg);
+  background: var(--neon);
+  box-shadow: var(--neon-glow);
+}

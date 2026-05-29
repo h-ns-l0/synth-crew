@@ -24,10 +24,11 @@ export default function Stage({ selectedSoundId }: Props) {
         display: "grid",
         gridTemplateColumns: `repeat(${state.arrangement.length}, 1fr)`,
         gap: 8,
-        padding: 16,
-        background: "#1f1f1d",
+        padding: "28px 16px",
+        background: "var(--bg-panel)",
+        border: "1px solid var(--border)",
         borderRadius: 12,
-        color: "#f1efe8",
+        color: "var(--text-h)",
       }}
     >
       {state.arrangement.map((soundId, slot) => (

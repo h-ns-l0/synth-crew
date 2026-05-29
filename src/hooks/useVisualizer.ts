@@ -18,7 +18,9 @@ export function useVisualizer(canvasRef: RefObject<HTMLCanvasElement | null>) {
 
       ctx.clearRect(0, 0, width, height);
       ctx.lineWidth = 2;
-      ctx.strokeStyle = "#c084fc";
+      ctx.strokeStyle = "#22d3ee";
+      ctx.shadowColor = "#22d3ee";
+      ctx.shadowBlur = 8;
       ctx.beginPath();
       for (let i = 0; i < wave.length; i++) {
         const x = (i / (wave.length - 1)) * width;
