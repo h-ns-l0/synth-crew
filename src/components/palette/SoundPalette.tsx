@@ -1,5 +1,6 @@
 import { SOUNDS } from "../../audio/sounds";
 import SoundChip from "./SoundChip";
+import styles from "./SoundPalette.module.css";
 
 interface Props {
   selectedId: string | null;
@@ -9,15 +10,7 @@ interface Props {
 // 배치 가능한 사운드 목록. 칩을 누르면 "이걸 놓겠다"고 선택.
 export default function SoundPalette({ selectedId, onSelect }: Props) {
   return (
-    <div
-      style={{
-        display: "flex",
-        flexWrap: "wrap",
-        justifyContent: "center",
-        gap: 8,
-        padding: 16,
-      }}
-    >
+    <div className={styles.palette}>
       {SOUNDS.map((sound) => (
         <SoundChip
           key={sound.id}

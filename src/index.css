@@ -1,17 +1,21 @@
 :root {
-  --bg: #08080d;
-  --bg-panel: #14141d;
-  --bg-elev: #1c1c28;
-  --text: #b9b9c9;
-  --text-h: #f3f3ff;
-  --border: #2a2a3c;
-  --neon: #22d3ee;
-  --neon-2: #e879f9;
-  --neon-glow: 0 0 14px rgba(34, 211, 238, 0.45);
+  /* 목업의 디자인 토큰을 구체 값으로 옮긴 것 */
+  --color-background-primary: #ffffff;
+  --color-background-secondary: #f5f4f7;
+  --color-text-primary: #1a1a20;
+  --color-text-secondary: #555562;
+  --color-text-tertiary: #8a8a96;
+  --color-border-secondary: #e3e2e8;
+  --color-border-tertiary: #ececf0;
+  --border-radius-md: 8px;
+  --border-radius-lg: 16px;
+  --font-sans: ui-sans-serif, system-ui, "Segoe UI", Roboto, sans-serif;
 
-  color-scheme: dark;
-  font: 16px/1.5 ui-sans-serif, system-ui, "Segoe UI", Roboto, sans-serif;
-  color: var(--text);
+  --stage-bg: #1f1f1d;
+
+  color-scheme: light;
+  font: 15px/1.5 var(--font-sans);
+  color: var(--color-text-primary);
   -webkit-font-smoothing: antialiased;
 }
 
@@ -22,78 +26,54 @@
 body {
   margin: 0;
   min-height: 100vh;
-  background:
-    radial-gradient(900px 500px at 50% -10%, rgba(34, 211, 238, 0.12), transparent 60%),
-    radial-gradient(700px 500px at 100% 0%, rgba(232, 121, 249, 0.1), transparent 55%),
-    var(--bg);
+  background: var(--color-background-primary);
 }
 
 #root {
-  max-width: 1100px;
+  max-width: 720px;
   margin: 0 auto;
   min-height: 100vh;
-  padding: 0 16px 64px;
+  padding: 0 16px 48px;
 }
 
 h1 {
-  font-size: 40px;
-  font-weight: 800;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  color: var(--text-h);
-  text-shadow: 0 0 18px rgba(34, 211, 238, 0.45);
-  margin: 24px 0;
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  margin: 20px 0 12px;
 }
 
 h2 {
-  color: var(--text-h);
-  letter-spacing: 0.5px;
-  margin: 24px 0 8px;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  margin: 20px 0 8px;
 }
 
 a {
-  color: var(--neon);
+  color: var(--color-text-primary);
   text-decoration: none;
 }
 
 button {
   font: inherit;
-  color: var(--text-h);
-  background: var(--bg-elev);
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  padding: 8px 16px;
   cursor: pointer;
-  transition:
-    border-color 0.15s,
-    box-shadow 0.15s,
-    transform 0.05s;
-}
-
-button:hover {
-  border-color: var(--neon);
-  box-shadow: var(--neon-glow);
-}
-
-button:active {
-  transform: translateY(1px);
 }
 
 input[type="text"] {
   font: inherit;
-  color: var(--text-h);
-  background: var(--bg-panel);
-  border: 1px solid var(--border);
-  border-radius: 8px;
+  color: var(--color-text-primary);
+  background: var(--color-background-primary);
+  border: 1px solid var(--color-border-secondary);
+  border-radius: var(--border-radius-md);
   padding: 8px 12px;
 }
 
 input[type="text"]:focus {
   outline: none;
-  border-color: var(--neon);
-  box-shadow: var(--neon-glow);
+  border-color: var(--color-text-tertiary);
 }
 
 input[type="range"] {
-  accent-color: var(--neon);
+  accent-color: var(--color-text-primary);
 }

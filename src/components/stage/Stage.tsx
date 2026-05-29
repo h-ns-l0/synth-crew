@@ -1,5 +1,7 @@
 import { useStudio } from "../../hooks/useStudio";
 import RobotPerformer from "./RobotPerformer";
+import Visualizer from "../visualizer/Visualizer";
+import styles from "./Stage.module.css";
 
 interface Props {
   selectedSoundId: string | null;
@@ -10,36 +12,26 @@ export default function Stage({ selectedSoundId }: Props) {
 
   function handleSlotClick(slot: number) {
     if (state.arrangement[slot]) {
-      // 이미 채워진 슬롯을 누르면 비움
-      dispatch({ type: "REMOVE_SOUND", slot });
+      dispatch({ type: "REMOVE_SOUND", slot }); // 채워진 슬롯 → 비움
     } else if (selectedSoundId) {
-      // 빈 슬롯 + 팔레트에서 고른 사운드가 있으면 배치
-      dispatch({ type: "PLACE_SOUND", slot, soundId: selectedSoundId });
+      dispatch({ type: "PLACE_SOUND", slot, soundId: selectedSoundId }); // 빈 슬롯 + 선택된 사운드 → 배치
     }
   }
 
   return (
-    <div
-      style={{
-        display: "grid",
-        gridTemplateColumns: `repeat(${state.arrangement.length}, 1fr)`,
-        gap: 8,
-        padding: "28px 16px",
-        background: "var(--bg-panel)",
-        border: "1px solid var(--border)",
-        borderRadius: 12,
-        color: "var(--text-h)",
-      }}
-    >
-      {state.arrangement.map((soundId, slot) => (
-        <RobotPerformer
-          key={slot}
-          slot={slot}
-          soundId={soundId}
-          playing={state.transport.isPlaying}
-          onClick={() => handleSlotClick(slot)}
-        />
-      ))}
+    <div className={styles.stage}>
+      <Visualizer />
+      <div className={styles.grid}>
+        {state.arrangement.map((soundId, slot) => (
+          <RobotPerformer
+            key={slot}
+            slot={slot}
+            soundId={soundId}
+            playing={state.transport.isPlaying}
+            onClick={() => handleSlotClick(slot)}
+          />
+        ))}
+      </div>
     </div>
   );
 }

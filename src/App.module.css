@@ -1,35 +1,24 @@
 .nav {
   display: flex;
-  gap: 8px;
+  gap: 4px;
   align-items: center;
-  padding: 14px 4px;
-  border-bottom: 1px solid var(--border);
-  margin-bottom: 8px;
-}
-
-.brand {
-  font-weight: 800;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  color: var(--text-h);
-  margin-right: auto;
-  text-shadow: 0 0 12px rgba(232, 121, 249, 0.5);
+  padding: 14px 2px;
 }
 
 .link {
-  color: var(--text);
+  color: var(--color-text-secondary);
   padding: 6px 12px;
-  border-radius: 8px;
-  border: 1px solid transparent;
+  border-radius: var(--border-radius-md);
+  font-size: 14px;
 }
 
 .link:hover {
-  color: var(--text-h);
-  border-color: var(--border);
+  background: var(--color-background-secondary);
+  color: var(--color-text-primary);
 }
 
 .active {
-  color: var(--bg);
-  background: var(--neon);
-  box-shadow: var(--neon-glow);
+  color: var(--color-text-primary);
+  background: var(--color-background-secondary);
+  font-weight: 600;
 }

@@ -1,0 +1,16 @@
+.chip {
+  font-size: 12px;
+  padding: 6px 12px;
+  border: none;
+  border-radius: var(--border-radius-md);
+  background: color-mix(in srgb, var(--accent) 12%, white);
+  color: color-mix(in srgb, var(--accent) 70%, black);
+  cursor: pointer;
+  font-weight: 500;
+  transition: background 0.15s, color 0.15s;
+}
+
+.selected {
+  background: var(--accent);
+  color: white;
+}

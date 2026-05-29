@@ -1,7 +1,14 @@
 import { useState } from "react";
 import * as Tone from "tone";
+import {
+  IconPlayerPlayFilled,
+  IconPlayerStopFilled,
+  IconShare,
+  IconCheck,
+} from "@tabler/icons-react";
 import { useStudio } from "../../hooks/useStudio";
 import { encodeArrangement } from "../../lib/share";
+import styles from "./Controls.module.css";
 
 export default function Controls() {
   const { state, dispatch } = useStudio();
@@ -26,20 +33,16 @@ export default function Controls() {
   }
 
   return (
-    <div
-      style={{
-        display: "flex",
-        gap: 12,
-        alignItems: "center",
-        justifyContent: "center",
-        padding: 12,
-      }}
-    >
-      <button type="button" onClick={togglePlay}>
-        {state.transport.isPlaying ? "■ 정지" : "▶ 재생"}
+    <div className={styles.controls}>
+      <button type="button" onClick={togglePlay} className={styles.play} aria-label={state.transport.isPlaying ? "정지" : "재생"}>
+        {state.transport.isPlaying ? (
+          <IconPlayerStopFilled size={18} />
+        ) : (
+          <IconPlayerPlayFilled size={18} />
+        )}
       </button>
 
-      <label style={{ display: "flex", alignItems: "center", gap: 8, fontSize: 14 }}>
+      <label className={styles.bpm}>
         BPM
         <input
           type="range"
@@ -50,11 +53,12 @@ export default function Controls() {
             dispatch({ type: "SET_BPM", bpm: Number(e.target.value) })
           }
         />
-        <span style={{ width: 32, textAlign: "right" }}>{state.transport.bpm}</span>
+        <span className={styles.bpmValue}>{state.transport.bpm}</span>
       </label>
 
-      <button type="button" onClick={share}>
-        {copied ? "✓ 복사됨" : "🔗 공유"}
+      <button type="button" onClick={share} className={styles.share}>
+        {copied ? <IconCheck size={14} /> : <IconShare size={14} />}
+        {copied ? "복사됨" : "공유"}
       </button>
     </div>
   );

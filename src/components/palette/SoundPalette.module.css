@@ -1,0 +1,9 @@
+.palette {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  background: var(--color-background-primary);
+  border: 1px solid var(--color-border-secondary);
+  border-radius: var(--border-radius-md);
+  padding: 12px;
+}

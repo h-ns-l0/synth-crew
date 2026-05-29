@@ -13,7 +13,6 @@ export default function App() {
       <AudioEngine />
       <BrowserRouter>
         <nav className={styles.nav}>
-          <span className={styles.brand}>◆ SYNTH CREW</span>
           <NavLink
             to="/"
             end

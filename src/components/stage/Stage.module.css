@@ -1,0 +1,17 @@
+.stage {
+  position: relative;
+  height: 210px;
+  background: var(--stage-bg);
+  border-radius: var(--border-radius-md);
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.grid {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 6px;
+  padding: 18px 10px;
+}

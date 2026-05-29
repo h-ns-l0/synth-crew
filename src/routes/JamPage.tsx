@@ -14,9 +14,10 @@ export default function JamPage() {
   }, [code, dispatch]);
 
   return (
-    <div style={{ padding: 16 }}>
-      <h1>JAM</h1>
-      <p style={{ marginBottom: 12 }}>공유받은 크루야. 그대로 재생하거나 바꿔봐.</p>
+    <div>
+      <p style={{ margin: "0 0 12px", fontSize: 13, color: "var(--color-text-secondary)" }}>
+        공유받은 크루야. 그대로 재생하거나 바꿔봐.
+      </p>
       <StudioView />
     </div>
   );

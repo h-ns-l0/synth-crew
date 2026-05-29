@@ -1,4 +1,6 @@
+import type { CSSProperties } from "react";
 import type { SoundModule } from "../../types";
+import styles from "./SoundChip.module.css";
 
 interface Props {
   sound: SoundModule;
@@ -6,36 +8,15 @@ interface Props {
   onClick: () => void;
 }
 
-// 팔레트의 사운드 1개. 선택되면 채워진 색으로 강조.
+// 팔레트의 사운드 1개. 평소엔 파스텔 칩, 선택되면 색이 가득 찬다.
 export default function SoundChip({ sound, selected, onClick }: Props) {
   return (
     <button
       type="button"
       onClick={onClick}
-      style={{
-        display: "flex",
-        alignItems: "center",
-        gap: 8,
-        padding: "8px 14px",
-        borderRadius: 999,
-        border: `2px solid ${sound.color}`,
-        background: selected ? sound.color : "transparent",
-        color: selected ? "#0b0b0c" : "#f1efe8",
-        cursor: "pointer",
-        fontSize: 14,
-        fontWeight: 600,
-        boxShadow: selected ? `0 0 16px ${sound.color}` : "none",
-        transition: "box-shadow 0.15s, background 0.15s",
-      }}
+      className={`${styles.chip} ${selected ? styles.selected : ""}`}
+      style={{ "--accent": sound.color } as CSSProperties}
     >
-      <span
-        style={{
-          width: 10,
-          height: 10,
-          borderRadius: "50%",
-          background: selected ? "#0b0b0c" : sound.color,
-        }}
-      />
       {sound.label}
     </button>
   );
