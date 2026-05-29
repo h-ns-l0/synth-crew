@@ -1,6 +1,6 @@
 .stage {
   position: relative;
-  height: 210px;
+  height: 234px;
   background: var(--stage-bg);
   border-radius: var(--border-radius-md);
   overflow: hidden;
@@ -11,7 +11,7 @@
   position: relative;
   z-index: 1;
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 6px;
-  padding: 18px 10px;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 6px 4px;
+  padding: 14px 10px;
 }
