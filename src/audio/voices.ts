@@ -1,4 +1,5 @@
 import * as Tone from "tone";
+import { ARP, BASS, CHANT, CHORD, LEAD_HI } from "./scale";
 
 // 16분음표 16칸 = 1마디. 모든 패턴이 이 그리드 위에서 돈다.
 const STEPS = 16;
@@ -75,19 +76,18 @@ export function createVoices(output: Tone.ToneAudioNode = Tone.getDestination())
   });
   subbass.volume.value = -6;
   register("subbass", subbass, (time, step) => {
-    if (step === 0) subbass.triggerAttackRelease("A1", "4n", time);
-    else if (step === 8) subbass.triggerAttackRelease("E1", "4n", time);
+    if (step === 0) subbass.triggerAttackRelease(BASS.root, "4n", time);
+    else if (step === 8) subbass.triggerAttackRelease(BASS.fifth, "4n", time);
   });
 
   // --- 신스 ---
-  const arpNotes = ["A3", "C4", "E4", "A4", "E4", "C4", "A3", "C4"];
   const arp = new Tone.Synth({
     oscillator: { type: "triangle" },
     envelope: { attack: 0.01, decay: 0.1, sustain: 0.2, release: 0.1 },
   });
   arp.volume.value = -10;
   register("arp", arp, (time, step) => {
-    if (step % 2 === 0) arp.triggerAttackRelease(arpNotes[step / 2], "16n", time);
+    if (step % 2 === 0) arp.triggerAttackRelease(ARP[step / 2], "16n", time);
   });
 
   const pad = new Tone.PolySynth(Tone.Synth, {
@@ -96,7 +96,7 @@ export function createVoices(output: Tone.ToneAudioNode = Tone.getDestination())
   });
   pad.volume.value = -20;
   register("pad", pad, (time, step) => {
-    if (step === 0) pad.triggerAttackRelease(["A3", "C4", "E4"], "1m", time);
+    if (step === 0) pad.triggerAttackRelease(CHORD, "1m", time);
   });
 
   const bleep = new Tone.Synth({
@@ -105,7 +105,7 @@ export function createVoices(output: Tone.ToneAudioNode = Tone.getDestination())
   });
   bleep.volume.value = -16;
   register("bleep", bleep, (time, step) => {
-    if (step % 4 === 3) bleep.triggerAttackRelease("A5", "16n", time);
+    if (step % 4 === 3) bleep.triggerAttackRelease(LEAD_HI, "16n", time);
   });
 
   // --- 보컬(합성) ---
@@ -116,8 +116,8 @@ export function createVoices(output: Tone.ToneAudioNode = Tone.getDestination())
   });
   chant.volume.value = -12;
   register("chant", chant, (time, step) => {
-    if (step === 0) chant.triggerAttackRelease("A3", "2n", time);
-    else if (step === 8) chant.triggerAttackRelease("E4", "2n", time);
+    if (step === 0) chant.triggerAttackRelease(CHANT[0], "2n", time);
+    else if (step === 8) chant.triggerAttackRelease(CHANT[1], "2n", time);
   });
 
   return {

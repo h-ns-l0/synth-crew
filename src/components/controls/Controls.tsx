@@ -23,6 +23,20 @@ export default function Controls() {
       <button type="button" onClick={togglePlay}>
         {state.transport.isPlaying ? "■ 정지" : "▶ 재생"}
       </button>
+
+      <label style={{ display: "flex", alignItems: "center", gap: 8, fontSize: 14 }}>
+        BPM
+        <input
+          type="range"
+          min={70}
+          max={160}
+          value={state.transport.bpm}
+          onChange={(e) =>
+            dispatch({ type: "SET_BPM", bpm: Number(e.target.value) })
+          }
+        />
+        <span style={{ width: 32, textAlign: "right" }}>{state.transport.bpm}</span>
+      </label>
     </div>
   );
 }
