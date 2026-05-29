@@ -35,6 +35,7 @@ export default function Stage({ selectedSoundId }: Props) {
           key={slot}
           slot={slot}
           soundId={soundId}
+          playing={state.transport.isPlaying}
           onClick={() => handleSlotClick(slot)}
         />
       ))}

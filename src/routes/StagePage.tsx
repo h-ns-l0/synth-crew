@@ -2,6 +2,7 @@ import { useState } from "react";
 import Stage from "../components/stage/Stage";
 import SoundPalette from "../components/palette/SoundPalette";
 import Controls from "../components/controls/Controls";
+import Visualizer from "../components/visualizer/Visualizer";
 
 export default function StagePage() {
   // 팔레트에서 고른 사운드 = "다음에 슬롯을 누르면 놓을 것". 무대에만 쓰는 UI 상태라 전역 대신 지역 state.
@@ -15,6 +16,7 @@ export default function StagePage() {
         onSelect={(id) => setSelectedSoundId((cur) => (cur === id ? null : id))}
       />
       <Controls />
+      <Visualizer />
       <Stage selectedSoundId={selectedSoundId} />
     </div>
   );

@@ -1,0 +1,12 @@
+.bobbing {
+  animation: bob 0.45s ease-in-out infinite alternate;
+}
+
+@keyframes bob {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-7px);
+  }
+}

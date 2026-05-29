@@ -1,13 +1,16 @@
 import { getSound } from "../../audio/sounds";
+import styles from "./RobotPerformer.module.css";
 
 interface Props {
   slot: number;
   soundId: string | null;
+  playing: boolean;
   onClick: () => void;
 }
 
-export default function RobotPerformer({ soundId, onClick }: Props) {
+export default function RobotPerformer({ soundId, playing, onClick }: Props) {
   const sound = soundId ? getSound(soundId) : null;
+  const bobbing = sound && playing; // 재생 중이고 사운드가 올라간 슬롯만 들썩인다
 
   return (
     <button
@@ -23,6 +26,7 @@ export default function RobotPerformer({ soundId, onClick }: Props) {
       }}
     >
       <div
+        className={bobbing ? styles.bobbing : undefined}
         style={{
           width: 64,
           height: 64,

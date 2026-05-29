@@ -2,6 +2,7 @@ import { useEffect, useRef } from "react";
 import * as Tone from "tone";
 import { useStudio } from "./useStudio";
 import { createVoices, type VoiceRig } from "../audio/voices";
+import { getAnalyser } from "../audio/master";
 
 // 전역 상태(arrangement/transport)를 실제 소리로 바꾸는 다리.
 // 화면을 그리지 않으므로 컴포넌트가 아닌 훅으로 둔다.
@@ -11,7 +12,7 @@ export function useAudioEngine() {
 
   // 1) 신스 + 시퀀스 1회 생성 (언마운트 시 정리)
   useEffect(() => {
-    const rig = createVoices();
+    const rig = createVoices(getAnalyser());
     rigRef.current = rig;
     return () => {
       rig.dispose();
