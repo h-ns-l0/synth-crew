@@ -2,8 +2,7 @@ import type { StudioState, StudioAction } from "../types";
 import { SLOT_COUNT } from "../audio/sounds";
 
 export const initialState: StudioState = {
-  // ⚠️ "kick"은 렌더 확인용 임시 시드. Day 3에서 클릭 배치 붙이면 null로 되돌릴 거야.
-  arrangement: ["kick", null, null, null, null],
+  arrangement: Array(SLOT_COUNT).fill(null),
   transport: { isPlaying: false, bpm: 102 },
 };
 

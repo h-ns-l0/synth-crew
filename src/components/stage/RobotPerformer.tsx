@@ -3,13 +3,25 @@ import { getSound } from "../../audio/sounds";
 interface Props {
   slot: number;
   soundId: string | null;
+  onClick: () => void;
 }
 
-export default function RobotPerformer({ soundId }: Props) {
+export default function RobotPerformer({ soundId, onClick }: Props) {
   const sound = soundId ? getSound(soundId) : null;
 
   return (
-    <div style={{ textAlign: "center" }}>
+    <button
+      type="button"
+      onClick={onClick}
+      style={{
+        background: "transparent",
+        border: "none",
+        cursor: "pointer",
+        textAlign: "center",
+        color: "inherit",
+        font: "inherit",
+      }}
+    >
       <div
         style={{
           width: 64,
@@ -26,6 +38,6 @@ export default function RobotPerformer({ soundId }: Props) {
         {sound ? "ROBO" : "+"}
       </div>
       <span style={{ fontSize: 12 }}>{sound ? sound.label : "비어있음"}</span>
-    </div>
+    </button>
   );
 }

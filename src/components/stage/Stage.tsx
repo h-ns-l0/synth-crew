@@ -1,8 +1,22 @@
 import { useStudio } from "../../hooks/useStudio";
 import RobotPerformer from "./RobotPerformer";
 
-export default function Stage() {
-  const { state } = useStudio();
+interface Props {
+  selectedSoundId: string | null;
+}
+
+export default function Stage({ selectedSoundId }: Props) {
+  const { state, dispatch } = useStudio();
+
+  function handleSlotClick(slot: number) {
+    if (state.arrangement[slot]) {
+      // 이미 채워진 슬롯을 누르면 비움
+      dispatch({ type: "REMOVE_SOUND", slot });
+    } else if (selectedSoundId) {
+      // 빈 슬롯 + 팔레트에서 고른 사운드가 있으면 배치
+      dispatch({ type: "PLACE_SOUND", slot, soundId: selectedSoundId });
+    }
+  }
 
   return (
     <div
@@ -17,7 +31,12 @@ export default function Stage() {
       }}
     >
       {state.arrangement.map((soundId, slot) => (
-        <RobotPerformer key={slot} slot={slot} soundId={soundId} />
+        <RobotPerformer
+          key={slot}
+          slot={slot}
+          soundId={soundId}
+          onClick={() => handleSlotClick(slot)}
+        />
       ))}
     </div>
   );
