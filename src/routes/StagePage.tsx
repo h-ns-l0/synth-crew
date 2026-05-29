@@ -1,3 +1,10 @@
+import Stage from "../components/stage/Stage";
+
 export default function StagePage() {
-    return <h1>Stage — 무대 (메인)</h1>;
-  }
+  return (
+    <div style={{ padding: 16 }}>
+      <h1>SYNTH CREW</h1>
+      <Stage />
+    </div>
+  );
+}
